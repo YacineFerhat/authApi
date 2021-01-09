@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Auth from "./components/auth/auth";
+import Todo from "./components/todo/todo";
+import { AuthContext } from "./context/authContext";
+import { useAuth } from "./hooks/useAuth";
+import { Switch, Route, withRouter } from "react-router-dom";
 
-function App() {
+const App = () => {
+  const { token, login, logout, userId } = useAuth();
+  let routes;
+  console.log(token);
+
+  if (token) {
+    routes = (
+      <Switch>
+        <Route exact path="/todo">
+          <Todo />
+        </Route>
+      </Switch>
+    );
+  } else {
+    routes = (
+      <Switch>
+        <Route exact path="/">
+          <Auth />
+        </Route>
+      </Switch>
+    );
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: !!token,
+        userId: userId,
+        login: login,
+        logout: logout,
+      }}
+    >
+      <div className="App">{routes}</div>
+    </AuthContext.Provider>
   );
-}
+};
 
 export default App;

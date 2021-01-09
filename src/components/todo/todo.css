@@ -1,0 +1,57 @@
+.container {
+    margin: 5% 10%;
+    border: 1px solid #2a9d8f;
+    padding: 20px;
+}
+
+input  {
+    border-radius: 5px;
+    width: 350px;
+}
+
+textarea {
+    border-radius: 5px;   
+    width: 350px;
+}
+
+.controlHolder {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    background-color:#264653;
+    margin-top: 20px;
+    color: white;
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.btnDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color:#264653;
+  
+}
+
+table {
+    border : 1px solid #2a9d8f;
+    margin-top:20px;
+    width:100%;
+}
+
+tr {
+    display: flex;
+    justify-content: space-between;
+}
+.checkbox{
+    width:100px
+}
+
+th td{
+    text-align: center;
+}
