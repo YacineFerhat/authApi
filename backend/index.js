@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 let dbConfig = require("./database/db");
 var cors = require("cors");
 const userRoute = require('./routes/user')
+const todoRoute = require('./routes/todo')
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,7 +20,7 @@ app.use(function (req, res, next) {
 
 
 app.use('/api/users', userRoute); 
-
+app.use('/api/todos', todoRoute)
 const port = process.env.PORT || 8080;
 
 
